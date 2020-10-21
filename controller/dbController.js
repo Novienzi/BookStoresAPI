@@ -23,9 +23,9 @@ let db;
     const adapter = new FileSync('db.json')
     db = low(adapter)
     db.defaults({
-      bookstoresModel: [],
-      libraryModel: [],
-      booksModel: []
+      bookstores: [],
+      library: [],
+      books: []
     })
       .write()
   } catch (error) {
@@ -122,7 +122,7 @@ function edit(tableName, id, body) {
   const checker = shapedBody(tableName, bodyCheck)
   if (checker) {
     db.get(tableName)
-      .find({ id })
+      .find(id)
       .assign(checker)
       .write()
     return checker
@@ -140,7 +140,7 @@ function edit(tableName, id, body) {
 function remove(tableName, id) {
   // const parsedId = parseInt(id)
   db.get(tableName)
-    .remove({ id })
+    .remove(id)
     .write()
 }
 
