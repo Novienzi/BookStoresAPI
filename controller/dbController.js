@@ -138,7 +138,6 @@ function edit(tableName, id, body) {
  * @param {String|Number} id data id
  */
 function remove(tableName, id) {
-  // const parsedId = parseInt(id)
   db.get(tableName)
     .remove(id)
     .write()
